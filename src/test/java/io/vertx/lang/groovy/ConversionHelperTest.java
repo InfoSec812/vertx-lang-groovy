@@ -28,4 +28,16 @@ public class ConversionHelperTest {
     public void toJsonElement() throws Exception {
         Object result = ConversionHelper.toJsonElement(null);
     }
+
+    @Test
+    public void fromJsonObject() throws Exception {
+        JsonObject testObj = new JsonObject()
+                                    .put("metrics", (String)null);
+
+        try {
+            Object result = ConversionHelper.fromJsonObject(testObj);
+        } catch (NullPointerException npe) {
+            fail("Should not throw NullPointerException");
+        }
+    }
 }
